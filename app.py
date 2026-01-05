@@ -45,36 +45,6 @@ with st.sidebar:
 
 # Barra de pH
 ph = st.slider("Selecciona tu pH de piel", 0.0, 14.0, 5.5, 0.1)
-    # 🔒 PERFUMES FIJOS (GARANTIZADO 3 SIEMPRE)
-perfumes = [
-    {
-        "nombre": "Bleu de Chanel",
-        "ocasión": "Uso diario",
-        "lugar": "Cuello y muñecas",
-        "notas_top": "Limón, menta",
-        "notas_corazon": "Jengibre, jazmín",
-        "notas_base": "Incienso, cedro",
-        "precio": "$150 USD"
-    },
-    {
-        "nombre": "Dior Sauvage",
-        "ocasión": "Todo momento",
-        "lugar": "Cuello",
-        "notas_top": "Bergamota",
-        "notas_corazon": "Lavanda",
-        "notas_base": "Ámbar",
-        "precio": "$155 USD"
-    },
-    {
-        "nombre": "YSL Y",
-        "ocasión": "Día y noche",
-        "lugar": "Muñecas",
-        "notas_top": "Manzana, jengibre",
-        "notas_corazon": "Salvia",
-        "notas_base": "Madera, tonka",
-        "precio": "$120 USD"
-    }
-]
 
 # Guardar pH en historial
 if ph not in st.session_state.historial_ph:
@@ -198,15 +168,6 @@ elif 5.5 < ph <= 6.5:
             "notas_base": "Ámbar gris, Cedro, Vetiver",
             "precio": "$155 USD"
         },
-         {
-            "nombre": "Dior Sauvage",
-            "ocasión": "Día a día",
-            "lugar": "Muñecas y cuello",
-            "notas_top": "Bergamota de Calabria, Pimienta",
-            "notas_corazon": "Lavanda, Pimienta Sichuan",
-            "notas_base": "Ámbar gris, Cedro, Vetiver",
-            "precio": "$155 USD"
-        },
         {
             "nombre": "Jean Paul Gaultier Le Male",
             "ocasión": "Cenas y citas",
@@ -308,10 +269,9 @@ st.markdown("</div>", unsafe_allow_html=True)
 # Mostrar perfumes en columnas con tarjetas mejoradas
 st.markdown("### 💎 Perfumes sugeridos para ti:")
 cols = st.columns(3)
-
-for col, p in zip(cols, perfumes):
-    with col:
-        st.markdown(f"### {p['nombre']}")
+for i, p in enumerate(perfumes):
+    with cols[i]:
+        st.markdown(f"""
         <div style='background-color:rgba(255,255,255,0.9); padding:20px; border-radius:15px; margin-bottom:10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
         """, unsafe_allow_html=True)
         
@@ -352,7 +312,9 @@ st.markdown("### 🛒 Comparador de Precios")
 col1, col2, col3 = st.columns(3)
 with col1:
     st.markdown(f"""
-    <div style='background-color:rgba(255,255,255,0.8); padding:15px; border-radius:10px; text-align:center;'>   
+    <div style='background-color:rgba(255,255,255,0.8); padding:15px; border-radius:10px; text-align:center;'>
+        <h4>🏪 Amazon</h4>
+        <p>Envío gratis con Prime</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -407,7 +369,3 @@ with tips_col2:
 st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown("<h3 style='text-align:center;'>✨ Tu fragancia ideal refleja tu estilo único ✨</h3>", unsafe_allow_html=True)
 st.markdown("<p style='text-align:center; color:#666;'>Recuerda: cada piel es diferente, ¡prueba antes de comprar!</p>", unsafe_allow_html=True)
-# 🔒 Seguro: si por cualquier error hay menos de 3 perfumes
-if len(perfumes) < 3:
-    perfumes = perfumes * 3
-    perfumes = perfumes[:3]
