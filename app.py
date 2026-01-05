@@ -353,7 +353,6 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.markdown(f"""
     <div style='background-color:rgba(255,255,255,0.8); padding:15px; border-radius:10px; text-align:center;'>
-        <h4>🏪 Amazon</h4>
         <p>Envío gratis con Prime</p>
     </div>
     """, unsafe_allow_html=True)
