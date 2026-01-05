@@ -28,7 +28,7 @@ st.write("Descubre tu fragancia ideal según tu pH, la ocasión y el mejor lugar
 
 # Sidebar para preferencias guardadas
 with st.sidebar:
-    st.markdown("### 📋 Tus Preferencias")
+    st.markdown("###  Tus Preferencias")
     
     if st.session_state.historial_ph:
         st.markdown("**Últimos pH consultados:**")
@@ -36,10 +36,10 @@ with st.sidebar:
             st.text(f"pH {ph_hist}")
     
     if st.session_state.perfumes_favoritos:
-        st.markdown("**💖 Perfumes Favoritos:**")
+        st.markdown("** Perfumes Favoritos:**")
         for fav in st.session_state.perfumes_favoritos:
             st.text(f"• {fav}")
-        if st.button("🗑️ Limpiar favoritos"):
+        if st.button(" Limpiar favoritos"):
             st.session_state.perfumes_favoritos = []
             st.rerun()
 
@@ -55,7 +55,7 @@ if ph <= 3.0:
     color = "#87CEEB"
     tipo = "Fragancias frescas y acuáticas"
     descripcion = "Tu piel es muy ácida. Los aromas frescos y acuáticos duran más y se sienten ligeros."
-    estacion = "🌸 Primavera / 🌺 Verano"
+    estacion = " Primavera /  Verano"
     perfumes = [
         {
             "nombre": "Acqua di Gio - Giorgio Armani",
@@ -89,7 +89,7 @@ elif 3.0 < ph <= 4.5:
     color = "#98D8C8"
     tipo = "Fragancias cítricas y aromáticas"
     descripcion = "Tu piel es ácida. Los aromas cítricos y aromáticos resaltan mejor y se perciben frescos."
-    estacion = "🌸 Primavera"
+    estacion = " Primavera"
     perfumes = [
         {
             "nombre": "Versace Pour Homme",
@@ -123,7 +123,7 @@ elif 4.5 < ph <= 5.5:
     color = "#B8D4E3"
     tipo = "Fragancias frescas y especiadas"
     descripcion = "Tu pH ligeramente ácido permite que los aromas frescos y especiados se mantengan todo el día."
-    estacion = "🌺 Verano"
+    estacion = " Verano"
     perfumes = [
         {
             "nombre": "Bleu de Chanel",
@@ -157,7 +157,7 @@ elif 5.5 < ph <= 6.5:
     color = "#C4B896"
     tipo = "Fragancias amaderadas y frescas"
     descripcion = "Tu pH equilibrado permite que fragancias amaderadas y frescas se mantengan perfectas."
-    estacion = "🌸 Primavera / 🍂 Otoño"
+    estacion = " Primavera /  Otoño"
     perfumes = [
         {
             "nombre": "Dior Sauvage",
@@ -191,7 +191,7 @@ elif 6.5 < ph <= 7.5:
     color = "#C9A66B"
     tipo = "Fragancias amaderadas y especiadas"
     descripcion = "Tu piel ligeramente alcalina resalta aromas cálidos y especiados con elegancia."
-    estacion = "🍂 Otoño / ❄️ Invierno"
+    estacion = " Otoño /  Invierno"
     perfumes = [
         {
             "nombre": "Yves Saint Laurent La Nuit de L'Homme",
@@ -225,7 +225,7 @@ else:
     color = "#8B7355"
     tipo = "Fragancias intensas y orientales"
     descripcion = "Tu pH muy alcalino favorece aromas intensos y sofisticados para ocasiones especiales."
-    estacion = "❄️ Invierno"
+    estacion = " Invierno"
     perfumes = [
         {
             "nombre": "Tom Ford Oud Wood",
@@ -261,13 +261,13 @@ set_background(color)
 
 # Mostrar tipo y descripción en panel grande
 st.markdown(f"<div style='background-color:rgba(255,255,255,0.8); padding:30px; border-radius:20px; margin-bottom:20px;'>", unsafe_allow_html=True)
-st.subheader(f"🌟 Tipo de fragancia recomendada: {tipo}")
+st.subheader(f" Tipo de fragancia recomendada: {tipo}")
 st.write(descripcion)
 st.markdown(f"**Mejor temporada:** {estacion}")
 st.markdown("</div>", unsafe_allow_html=True)
 
 # Mostrar perfumes en columnas con tarjetas mejoradas
-st.markdown("### 💎 Perfumes sugeridos para ti:")
+st.markdown("###  Perfumes sugeridos para ti:")
 cols = st.columns(3)
 for i, p in enumerate(perfumes):
     with cols[i]:
@@ -276,17 +276,17 @@ for i, p in enumerate(perfumes):
         """, unsafe_allow_html=True)
         
         st.markdown(f"### {p['nombre']}")
-        st.markdown(f"**💰 Precio:** {p['precio']}")
-        st.markdown(f"**🎭 Ocasión:** {p['ocasión']}")
-        st.markdown(f"**📍 Aplicación:** {p['lugar']}")
+        st.markdown(f"** Precio:** {p['precio']}")
+        st.markdown(f"** Ocasión:** {p['ocasión']}")
+        st.markdown(f"** Aplicación:** {p['lugar']}")
         
-        with st.expander("🌺 Ver notas de fragancia"):
+        with st.expander(" Ver notas de fragancia"):
             st.markdown(f"**Notas superiores:** {p['notas_top']}")
             st.markdown(f"**Notas de corazón:** {p['notas_corazon']}")
             st.markdown(f"**Notas de base:** {p['notas_base']}")
         
         # Enlaces de compra
-        st.markdown("**🛍️ Comprar en:**")
+        st.markdown("** Comprar en:**")
         link_col1, link_col2, link_col3 = st.columns(3)
         with link_col1:
             st.markdown(f"[Amazon](https://www.amazon.com/s?k={p['nombre'].replace(' ', '+')})", unsafe_allow_html=True)
@@ -297,23 +297,23 @@ for i, p in enumerate(perfumes):
         
         # Botón para agregar a favoritos
         if p['nombre'] not in st.session_state.perfumes_favoritos:
-            if st.button(f"💖 Agregar a favoritos", key=f"fav_{i}"):
+            if st.button(f" Agregar a favoritos", key=f"fav_{i}"):
                 st.session_state.perfumes_favoritos.append(p['nombre'])
                 st.rerun()
         else:
-            st.success("✅ En favoritos")
+            st.success(" En favoritos")
         
         st.markdown("</div>", unsafe_allow_html=True)
 
 # Comparador de precios
 st.markdown("<hr>", unsafe_allow_html=True)
-st.markdown("### 🛒 Comparador de Precios")
+st.markdown("###  Comparador de Precios")
 
 col1, col2, col3 = st.columns(3)
 with col1:
     st.markdown(f"""
     <div style='background-color:rgba(255,255,255,0.8); padding:15px; border-radius:10px; text-align:center;'>
-        <h4>🏪 Amazon</h4>
+        <h4> Amazon</h4>
         <p>Envío gratis con Prime</p>
     </div>
     """, unsafe_allow_html=True)
@@ -321,7 +321,7 @@ with col1:
 with col2:
     st.markdown(f"""
     <div style='background-color:rgba(255,255,255,0.8); padding:15px; border-radius:10px; text-align:center;'>
-        <h4>💫 Sephora</h4>
+        <h4> Sephora</h4>
         <p>Muestras gratis incluidas</p>
     </div>
     """, unsafe_allow_html=True)
@@ -329,20 +329,20 @@ with col2:
 with col3:
     st.markdown(f"""
     <div style='background-color:rgba(255,255,255,0.8); padding:15px; border-radius:10px; text-align:center;'>
-        <h4>🎁 Ulta Beauty</h4>
+        <h4> Ulta Beauty</h4>
         <p>Puntos de recompensa</p>
     </div>
     """, unsafe_allow_html=True)
 
 # Consejos adicionales
 st.markdown("<hr>", unsafe_allow_html=True)
-st.markdown("### 💡 Consejos de Aplicación")
+st.markdown("###  Consejos de Aplicación")
 
 tips_col1, tips_col2 = st.columns(2)
 with tips_col1:
     st.markdown("""
     <div style='background-color:rgba(255,255,255,0.8); padding:20px; border-radius:10px;'>
-        <h4>🌟 Puntos de Pulso</h4>
+        <h4> Puntos de Pulso</h4>
         <ul>
             <li>Detrás de las orejas</li>
             <li>Interior de muñecas</li>
@@ -355,7 +355,7 @@ with tips_col1:
 with tips_col2:
     st.markdown(f"""
     <div style='background-color:rgba(255,255,255,0.8); padding:20px; border-radius:10px;'>
-        <h4>⏰ Mejor Momento</h4>
+        <h4> Mejor Momento</h4>
         <ul>
             <li>Después de la ducha</li>
             <li>Sobre piel hidratada</li>
@@ -367,5 +367,5 @@ with tips_col2:
 
 # Mensaje final
 st.markdown("<hr>", unsafe_allow_html=True)
-st.markdown("<h3 style='text-align:center;'>✨ Tu fragancia ideal refleja tu estilo único ✨</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align:center;'> Tu fragancia ideal refleja tu estilo único </h3>", unsafe_allow_html=True)
 st.markdown("<p style='text-align:center; color:#666;'>Recuerda: cada piel es diferente, ¡prueba antes de comprar!</p>", unsafe_allow_html=True)
